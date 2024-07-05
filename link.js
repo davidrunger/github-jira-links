@@ -2,6 +2,20 @@
  * This addon makes a Jira issue name in a Github PR title clickable.
  */
 
+// Needed to avoid UNSAFE_VAR_ASSIGNMENT web-ext warning.
+//https://devtidbits.com/2017/12/06/quick-fix-the-unsafe_var_assignment-warning-in-javascript/
+function safeAssignInnerHtml(element, html) {
+  const parser = new DOMParser();
+  const parsed = parser.parseFromString(html, `text/html`);
+  const tags = parsed.getElementsByTagName(`body`);
+
+  element.innerHTML = ``;
+
+  for (const tag of tags) {
+    element.appendChild(tag);
+  }
+}
+
 var getting = chrome.storage.local.get("jiraOrganization",  function(item) {
 
   if (!item.jiraOrganization) {
@@ -22,7 +36,8 @@ var getting = chrome.storage.local.get("jiraOrganization",  function(item) {
       if (matches != null) {
         // matches[0] is the full text
         link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
-        span.innerHTML = matches[1] + link + matches[3];
+        const newSpanHtml = matches[1] + link + matches[3];
+        safeAssignInnerHtml(span, newSpanHtml)
       }
     });
   });
