@@ -18,7 +18,7 @@ var getting = chrome.storage.local.get("jiraOrganization",  function(item) {
     var elements = document.querySelectorAll(selector);
 
     elements.forEach(function(span, index, list) {
-      matches = span.innerHTML.match(/(.*)\b([A-Z]{2}-[0-9]+)\b(.*)/);
+      matches = span.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
       if (matches != null) {
         // matches[0] is the full text
         link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
