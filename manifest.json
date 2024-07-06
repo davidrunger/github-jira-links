@@ -15,7 +15,7 @@
   "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
-      "id": "{9af59bf8-e1ac-455f-96d4-96f56fdf2565}"
+      "id": "{dbcf2397-060a-41c6-983f-fee5f54c7ecb}"
     }
   }
 }
