@@ -7,7 +7,7 @@
 function safeAssignInnerHtml(element, html) {
   const parser = new DOMParser();
   const parsed = parser.parseFromString(html, `text/html`);
-  const tags = parsed.getElementsByTagName(`body`);
+  const tags = parsed.querySelector('body').children;
 
   element.innerHTML = ``;
 
@@ -16,29 +16,32 @@ function safeAssignInnerHtml(element, html) {
   }
 }
 
-var getting = chrome.storage.local.get("jiraOrganization",  function(item) {
+function linkifyJiraKeys() {
+  chrome.storage.local.get("jiraOrganization",  function(item) {
+    if (!item.jiraOrganization) {
+        console.log("Jira organization is not configured");
+        return
+    }
 
-  if (!item.jiraOrganization) {
-      console.log("Jira organization is not configured");
-      return
-  }
+    var selectors = [
+      '.js-issue-title',
+      '.comment-body'
+    ];
 
-  var selectors = [
-    '.js-issue-title',
-    '.comment-body'
-  ];
+    selectors.forEach(function(selector) {
+      var elements = document.querySelectorAll(selector);
 
-  selectors.forEach(function(selector) {
-    var elements = document.querySelectorAll(selector);
-
-    elements.forEach(function(span, index, list) {
-      matches = span.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
-      if (matches != null) {
-        // matches[0] is the full text
-        link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
-        const newSpanHtml = matches[1] + link + matches[3];
-        safeAssignInnerHtml(span, newSpanHtml)
-      }
+      elements.forEach(function(element, index, list) {
+        matches = element.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
+        if (matches != null) {
+          // matches[0] is the full text
+          link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
+          const newSpanHtml = `<span>${matches[1] + link + matches[3]}</span>`;
+          safeAssignInnerHtml(element, newSpanHtml)
+        }
+      });
     });
   });
-});
+}
+
+window.addEventListener('turbo:load', linkifyJiraKeys);
