@@ -19,6 +19,7 @@ function safeAssignInnerHtml(element, html) {
 function linkifyJiraKeys() {
   chrome.storage.local.get('jiraOrganization', function (item) {
     if (!item.jiraOrganization) {
+      // eslint-disable-next-line no-console
       console.log('Jira organization is not configured');
       return;
     }
@@ -29,10 +30,10 @@ function linkifyJiraKeys() {
       var elements = document.querySelectorAll(selector);
 
       elements.forEach(function (element, index, list) {
-        matches = element.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
+        const matches = element.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
         if (matches != null) {
           // matches[0] is the full text
-          link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
+          const link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
           const newSpanHtml = `<span>${matches[1] + link + matches[3]}</span>`;
           safeAssignInnerHtml(element, newSpanHtml);
         }

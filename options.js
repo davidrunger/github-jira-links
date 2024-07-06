@@ -12,6 +12,7 @@ function saveOptions(e) {
 
 function restoreOptions() {
   function onError(error) {
+    // eslint-disable-next-line no-console
     console.log(`Error: ${error}`);
   }
 
