@@ -2,8 +2,8 @@
  * This addon makes a Jira issue name in GitHub PR titles and comments clickable.
  */
 
-// Needed to avoid UNSAFE_VAR_ASSIGNMENT web-ext warning.
-//https://devtidbits.com/2017/12/06/quick-fix-the-unsafe_var_assignment-warning-in-javascript/
+// This complexity avoids an UNSAFE_VAR_ASSIGNMENT web-ext warning.
+// https://devtidbits.com/2017/12/06/quick-fix-the-unsafe_var_assignment-warning-in-javascript/
 function safeAssignInnerHtml(element, html) {
   const parser = new DOMParser();
   const parsed = parser.parseFromString(html, 'text/html');
@@ -42,4 +42,6 @@ function linkifyJiraKeys() {
   });
 }
 
+window.addEventListener('DOMContentLoaded', linkifyJiraKeys);
 window.addEventListener('turbo:load', linkifyJiraKeys);
+linkifyJiraKeys();
