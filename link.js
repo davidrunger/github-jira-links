@@ -6,10 +6,10 @@
 //https://devtidbits.com/2017/12/06/quick-fix-the-unsafe_var_assignment-warning-in-javascript/
 function safeAssignInnerHtml(element, html) {
   const parser = new DOMParser();
-  const parsed = parser.parseFromString(html, `text/html`);
+  const parsed = parser.parseFromString(html, 'text/html');
   const tags = parsed.querySelector('body').children;
 
-  element.innerHTML = ``;
+  element.innerHTML = '';
 
   for (const tag of tags) {
     element.appendChild(tag);
