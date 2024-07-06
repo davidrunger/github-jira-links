@@ -1,5 +1,5 @@
 /*
- * This addon makes a Jira issue name in a Github PR title clickable.
+ * This addon makes a Jira issue name in GitHub PR titles and comments clickable.
  */
 
 // Needed to avoid UNSAFE_VAR_ASSIGNMENT web-ext warning.
