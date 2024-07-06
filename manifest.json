@@ -5,20 +5,14 @@
   "description": "Change Jira issues references into clickable link in Github.",
   "content_scripts": [
     {
-      "matches": [
-        "https://github.com/*"
-      ],
-      "js": [
-        "link.js"
-      ]
+      "matches": ["https://github.com/*"],
+      "js": ["link.js"]
     }
   ],
   "options_ui": {
     "page": "options.html"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
       "id": "{9af59bf8-e1ac-455f-96d4-96f56fdf2565}"
