@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail # exit on any error, don't allow undefined variables, pipes don't swallow errors
+
+lint gitleaks
+
+background-and-notify bin/lint/web-ext
+background-and-notify lint eslint
+background-and-notify lint prettier
