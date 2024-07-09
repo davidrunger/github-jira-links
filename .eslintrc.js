@@ -7,11 +7,9 @@ module.exports = {
   globals: {
     chrome: false, // globally available in browser extensions (?)
   },
-  extends: [
-    'eslint:recommended',
-  ],
+  extends: ['eslint:recommended'],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
