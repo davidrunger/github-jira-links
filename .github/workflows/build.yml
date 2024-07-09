@@ -33,3 +33,5 @@ jobs:
         run: ./node_modules/.bin/prettier --check
       - name: Run ESLint
         run: ./node_modules/.bin/eslint .
+      - name: Run web-ext
+        run: ./bin/lint/web-ext
