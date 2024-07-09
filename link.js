@@ -30,7 +30,9 @@ function linkifyJiraKeys() {
       var elements = document.querySelectorAll(selector);
 
       elements.forEach(function (element, index, list) {
-        const matches = element.innerHTML.match(/(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/);
+        const matches = element.innerHTML.match(
+          /(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/,
+        );
         if (matches != null) {
           // matches[0] is the full text
           const link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
