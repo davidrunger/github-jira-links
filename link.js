@@ -24,7 +24,7 @@ function linkifyJiraKeys() {
       return;
     }
 
-    var selectors = ['.js-issue-title', '.comment-body'];
+    var selectors = ['.js-issue-title'];
 
     selectors.forEach(function (selector) {
       var elements = document.querySelectorAll(selector);
