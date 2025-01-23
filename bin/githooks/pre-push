@@ -6,4 +6,5 @@ lint gitleaks
 
 background-and-notify bin/lint/web-ext
 background-and-notify lint eslint
+background-and-notify lint newlines
 background-and-notify lint prettier
