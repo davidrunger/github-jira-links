@@ -2,10 +2,16 @@
 
 set -euo pipefail # exit on any error, don't allow undefined variables, pipes don't swallow errors
 
+echo 'a'
 ignore_files=$(git ls-files --others --ignored --exclude-standard | grep -Ev '^node_modules/')
+echo 'b'
 
 if [ -n "$ignore_files" ] ; then
+  echo 'c'
   ./node_modules/.bin/web-ext lint --warnings-as-errors --ignore-files $ignore_files
+  echo 'd'
 else
+  echo 'e'
   ./node_modules/.bin/web-ext lint --warnings-as-errors
+  echo 'f'
 fi
