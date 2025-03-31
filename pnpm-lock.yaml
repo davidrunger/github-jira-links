@@ -899,8 +899,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  ky@1.7.5:
-    resolution: {integrity: sha512-HzhziW6sc5m0pwi5M196+7cEBtbt0lCYi67wNsiwMUmz833wloE0gbzJPWKs1gliFKQb34huItDQX97LyOdPdA==}
+  ky@1.8.0:
+    resolution: {integrity: sha512-DoKGmG27nT8t/1F9gV8vNzggJ3mLAyD49J8tTMWHeZvS8qLc7GlyTieicYtFzvDznMe/q2u38peOjkWc5/pjvw==}
     engines: {node: '>=18'}
 
   latest-version@9.0.0:
@@ -2370,7 +2370,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  ky@1.7.5: {}
+  ky@1.8.0: {}
 
   latest-version@9.0.0:
     dependencies:
@@ -2494,7 +2494,7 @@ snapshots:
 
   package-json@10.0.1:
     dependencies:
-      ky: 1.7.5
+      ky: 1.8.0
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
       semver: 7.7.1
