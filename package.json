@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.2",
     "globals": "^17.4.0",
