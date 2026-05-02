@@ -4,7 +4,7 @@
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.2.1",
-    "globals": "^17.5.0",
+    "globals": "^17.6.0",
     "prettier": "^3.8.3",
     "web-ext": "^10.1.0"
   }
