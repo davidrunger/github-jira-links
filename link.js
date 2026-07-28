@@ -24,22 +24,18 @@ function linkifyJiraKeys() {
       return;
     }
 
-    var selectors = ['.js-issue-title'];
+    var elements = document.querySelectorAll('h1');
 
-    selectors.forEach(function (selector) {
-      var elements = document.querySelectorAll(selector);
-
-      elements.forEach(function (element, index, list) {
-        const matches = element.innerHTML.match(
-          /(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/,
-        );
-        if (matches != null) {
-          // matches[0] is the full text
-          const link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
-          const newSpanHtml = `<span>${matches[1] + link + matches[3]}</span>`;
-          safeAssignInnerHtml(element, newSpanHtml);
-        }
-      });
+    elements.forEach(function (element, index, list) {
+      const matches = element.innerHTML.match(
+        /(.*)\b([A-Z]{2,7}-[0-9]+)\b(.*)/,
+      );
+      if (matches != null) {
+        // matches[0] is the full text
+        const link = `<a href="https://${item.jiraOrganization}.atlassian.net/browse/${matches[2]}">${matches[2]}</a>`;
+        const newSpanHtml = `<span>${matches[1] + link + matches[3]}</span>`;
+        safeAssignInnerHtml(element, newSpanHtml);
+      }
     });
   });
 }
