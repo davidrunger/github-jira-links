@@ -5,6 +5,7 @@ set -euo pipefail # exit on any error, don't allow undefined variables, pipes do
 lint secrets
 
 background-and-notify bin/lint/web-ext
+background-and-notify lint ascii
 background-and-notify lint eslint
 background-and-notify lint newlines
 background-and-notify lint prettier
